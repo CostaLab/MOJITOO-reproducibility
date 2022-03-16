@@ -41,6 +41,11 @@ cell_num <- (1:10)*3000
 set.seed(10)
 
 new_order <- sample(colnames(object))
+for(a_num in cell_num){
+  cells <-new_order[1:a_num]
+  a_sub <- subset(object, cells=cells)
+  save_object(a_sub, glue("save/{a_num}.Rds"))
+}
 
 dir.create("save")
 save_object(object, glue("save/all.Rds"))
